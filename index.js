@@ -1,8 +1,14 @@
 var browserstack = require('browserstack-local');
 const { Builder, By, Key, until } = require('selenium-webdriver');
 const http = require('http');
+const fs = require('fs')
 
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { 'content-type': 'text/html' })
+  fs.createReadStream('index.html').pipe(res)
+})
 
+server.listen(process.env.PORT || 3000)
 //creates an instance of Local
 var bs_local = new browserstack.Local();
 
