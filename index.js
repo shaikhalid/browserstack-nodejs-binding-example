@@ -47,7 +47,7 @@ bs_local.start(bs_local_args, function() {
             console.log("Stopped BrowserStackLocal");
         });
         driver.quit();
-                
+        server.close();     
     });
 
 });
